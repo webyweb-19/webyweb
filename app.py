@@ -50,4 +50,6 @@ def contact():
 
         return jsonify({"success": True, "message": "Message stored successfully!"}), 200
     except Exception as e:
-        return jsonify({"success": False, "error":
+        import traceback
+        traceback.print_exc()   # 👈 this shows the full error in Render logs
+        return jsonify({"success": False, "error": str(e)}), 500
