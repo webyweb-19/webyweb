@@ -385,11 +385,12 @@ form.addEventListener('submit', async (e) => {
   };
 
   try {
-    const res = await fetch('/api/contact', {   // <-- same-origin endpoint
+    const res = await fetch('https://webyweb.onrender.com/api/contact', {   // <-- deployed Render URL
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
+
 
     const result = await res.json();
     if (result.success) {
