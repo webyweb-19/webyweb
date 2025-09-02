@@ -7,58 +7,75 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #3a86ff;
-            --secondary: #8338ec;
-            --accent: #ff006e;
-            --dark: #1a1a2e;
-            --light: #f8f9fa;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light);
-            color: var(--dark);
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-        
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover:after {
-            width: 100%;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-    </style>
+    :root {
+        --primary: #3a86ff;
+        --secondary: #8338ec;
+        --accent: #ff006e; /* pink accent */
+        --dark: #1a1a2e;
+        --light: #f8f9fa;
+    }
+    
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--light);
+        color: var(--dark);
+    }
+    
+    .gradient-bg {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    }
+    
+    .skill-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+                    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .project-card:hover .project-overlay {
+        opacity: 1;
+    }
+    
+    .nav-link {
+        position: relative;
+        display: inline-block;
+    }
+
+    .nav-link:after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--accent);
+        transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover:after {
+        width: 100%;
+    }
+
+    /* Hover effect for nav links */
+    nav a:hover {
+        color: var(--accent);
+    }
+
+    /* Hover effect for hamburger menu */
+    #menuBtn:hover {
+        color: var(--accent);
+    }
+    
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+    
+    .floating {
+        animation: float 6s ease-in-out infinite;
+    }
+</style>
+
 </head>
 <body>
     <!-- Navigation -->
@@ -92,10 +109,11 @@
             <div class="md:w-1/2 mb-10 md:mb-0">
                 <h1 class="text-4xl md:text-6xl font-bold mb-4">Crafting Digital Experiences</h1>
                 <p class="text-xl mb-8 opacity-90">I design and build beautiful, functional websites that help brands thrive in the digital world.</p>
-                <div class="flex space-x-4">
-                    <button class="bg-white text-purple-600 px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition duration-300">View Portfolio</button>
-                    <button class="border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-purple-600 transition duration-300">Get in Touch</button>
-                </div>
+               <div class="flex space-x-4">
+                  <a href="#portfolio" class="bg-white text-purple-600 px-6 py-3 rounded-full font-medium hover:bg-gray-100 transition duration-300">View Portfolio</a>
+                  <a href="#contact" class="border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-purple-600 transition duration-300">Get in Touch</a>
+               </div>
+
             </div>
             <div class="md:w-1/2 flex justify-center">
                 <div class="relative">
@@ -391,7 +409,6 @@ form.addEventListener('submit', async (e) => {
       body: JSON.stringify(data)
     });
 
-
     const result = await res.json();
     if (result.success) {
       alert('✅ Message sent successfully!');
@@ -403,6 +420,29 @@ form.addEventListener('submit', async (e) => {
     alert('⚠️ Could not connect to server.');
     console.error(err);
   }
+});
+
+
+// =============================
+// ✅ Hamburger Menu Script
+// =============================
+const menuToggle = document.getElementById('menu-toggle');
+const closeMenu = document.getElementById('close-menu');
+const mobileMenu = document.getElementById('mobile-menu');
+
+menuToggle.addEventListener('click', () => {
+  mobileMenu.classList.remove('hidden');
+});
+
+closeMenu.addEventListener('click', () => {
+  mobileMenu.classList.add('hidden');
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+  });
 });
 </script>
 
