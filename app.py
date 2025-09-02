@@ -8,7 +8,7 @@ CORS(app)  # allows browser requests
 # --------------------
 # MySQL config (Railway)
 # --------------------
-app.config['MYSQL_HOST'] = 'mysql.railway.internal'   # <-- replace with Railway Host
+app.config['MYSQL_HOST'] = 'containers-us-west-xx.railway.app'   # <-- replace with Railway Host
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'lBdFeRIkviKgQkEayWEbNwjWlfiixRSs'            # <-- replace with Railway Password
 app.config['MYSQL_DB'] = 'railway'                                # default Railway DB
